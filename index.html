@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30秒颜色反应挑战</title>
+<style>
+
+:root{font-family:"Microsoft YaHei","Segoe UI",sans-serif;color:#3e2817;background:#20160f;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:28px 18px;background:radial-gradient(ellipse at 50% 35%,#a4692533,transparent 65%),repeating-linear-gradient(0deg,transparent 0 112px,#0d0908aa 112px 119px),repeating-linear-gradient(90deg,#302015 0 65px,#392519 65px 130px,#1d140e 130px 138px)}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px dashed #1a2924;outline-offset:4px}[hidden]{display:none!important}
+.shell{width:min(100%,480px)}header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px}.brand{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:2px;color:#e3c58e}.mark{display:grid;grid-template-columns:repeat(2,5px);gap:3px}.mark i{width:5px;height:5px;background:#d5a64c}
+.actions{display:flex;align-items:center;gap:8px}.badge{font-size:10px;color:#bda276;white-space:nowrap}.window-button{border:2px solid #ab803d;background:#332317;color:#f5dc9c;padding:5px 9px;box-shadow:2px 2px 0 #090704;font-size:11px;white-space:nowrap}.window-button:hover:not(:disabled){background:#584022}.window-button:disabled{opacity:.4;cursor:default}
+.card{position:relative;border:3px solid #5d3a18;padding:26px 28px 24px;background-color:#f1d99f;background-image:radial-gradient(ellipse at 10% 5%,#ab6a2426,transparent 45%),radial-gradient(ellipse at 95% 92%,#a8662133,transparent 40%),repeating-linear-gradient(0deg,#ffffff08 0 2px,#96612d08 2px 4px),linear-gradient(100deg,#e8c884,#f6e2af 16%,#f5dfaa 82%,#e8c784);box-shadow:0 5px 0 #251407,0 0 0 3px #ba8c42,6px 0 0 0 #4b2f16,-6px 0 0 0 #4b2f16,0 16px 38px #0008}
+.card:before,.card:after{content:"";position:absolute;left:8px;width:14px;height:14px;border:2px solid #614314;background:linear-gradient(135deg,#fff0a2 0 20%,#dca82c 20% 55%,#946010 55% 80%,#523610 80%);box-shadow:2px 2px 0 #a77b39;pointer-events:none}.card:before{top:9px}.card:after{bottom:9px}
+.pin{position:absolute;right:8px;width:14px;height:14px;border:2px solid #614314;background:linear-gradient(135deg,#fff0a2 0 20%,#dca82c 20% 55%,#946010 55% 80%,#523610 80%);box-shadow:2px 2px 0 #a77b39;pointer-events:none}.pin.top{top:9px}.pin.bottom{bottom:9px}
+.paper-title{display:flex;align-items:center;justify-content:center;gap:10px;width:85%;margin:0 auto 22px;padding:9px 12px;border:3px solid #634116;outline:2px solid #cea14d;background:linear-gradient(90deg,#d3a34d,#f3d88b 18%,#edc775 80%,#bc8833);box-shadow:3px 4px 0 #a57939;font-size:26px;line-height:1.2;font-weight:900;letter-spacing:5px;position:relative}
+.paper-title:before,.paper-title:after{content:"";position:absolute;top:8px;width:18px;height:calc(100% - 2px);background:#cba355;border:2px solid #65421d;z-index:-1}.paper-title:before{left:-18px}.paper-title:after{right:-18px}
+.scroll-icon{width:25px;height:28px;flex-shrink:0;image-rendering:pixelated}
+.eyebrow{text-align:center;font-size:11px;letter-spacing:3px;color:#78552a;font-weight:700}
+h1{font-size:29px;line-height:1.3;letter-spacing:1px;text-align:center;margin:8px 0 13px;text-shadow:1px 1px #fff0c2}h1 span{display:inline;margin-right:7px}p{font-size:13px;line-height:1.8;color:#71502e;margin:0}#intro>p{text-align:center}
+.rule{border:2px solid #bf955b;box-shadow:inset 0 0 0 3px #efdba7;margin:21px 0 16px;padding:16px;background:#fbe7b74d}.rule strong{display:block;font-size:14px;margin-bottom:12px}.example{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px}.example-command{font-size:23px;font-weight:800;color:#2875c7}.arrow{color:#795426;font-size:20px}.sample{width:48px;height:40px;background:#d94c50;border:2px solid #593b25;display:grid;place-items:center;font-size:14px;font-weight:800;color:#2875c7;paint-order:stroke fill;-webkit-text-stroke:2px white;box-shadow:2px 2px 0 #9f743a}.rule p{font-size:12px}
+.notes{display:flex;justify-content:space-between;gap:4px;font-size:11px;color:#75502c;padding:12px 0;border-top:2px dotted #967039;margin-bottom:15px}
+.primary{width:100%;padding:12px;border:3px solid #302b12;outline:2px solid #b68b3f;background:linear-gradient(#5b7528 0 9%,#3e571c 9% 86%,#283e13 86%);box-shadow:inset 3px 0 #8a9949,inset -3px 0 #2b3d12,3px 4px 0 #8a6328;color:#fff2b7;font-size:19px;font-weight:900;letter-spacing:2px;text-shadow:2px 2px #1e2d10}.primary:hover{filter:brightness(1.12)}.primary:active{transform:translateY(2px);box-shadow:inset 3px 0 #8a9949,inset -3px 0 #2b3d12,2px 2px 0 #8a6328}
+footer{text-align:center;color:#cfb482;font-size:11px;letter-spacing:2px;margin-top:17px}
+.stats{display:flex;align-items:center;justify-content:space-between;border-top:2px dotted #946b33;border-bottom:1px solid #ad8244;padding:10px 0 8px}.stat-label{display:block;font-size:11px;font-weight:700;color:#79552b;margin-bottom:3px}.stat-value{font-size:27px;font-weight:800;font-variant-numeric:tabular-nums}.unit{font-size:12px;color:#805c32;margin-left:5px}#time.low{color:#a13225}
+.time-track{height:7px;background:#c6aa74;border:1px solid #96703b;margin-top:5px;overflow:hidden}#time-fill{height:100%;width:100%;background:repeating-linear-gradient(90deg,#6c802f 0 12px,#516326 12px 14px)}
+.instruction{text-align:center;padding:17px 0 15px}.instruction small{font-size:11px;color:#72512c}.instruction h2{font-size:30px;line-height:1.25;margin:7px 0 0;font-weight:800}#command-rule{color:#402b1a;font-size:.65em}#command-target{white-space:nowrap;text-shadow:0 1px #fff3d3}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,330px);margin:auto}.tile{aspect-ratio:1;min-width:0;border:2px solid #4a3626;border-radius:0;position:relative;display:grid;place-items:center;padding:0;font-size:23px;font-weight:800;line-height:1;white-space:nowrap;user-select:none;touch-action:manipulation;box-shadow:inset 3px 3px #ffffff42,inset -3px -3px #00000026,2px 2px #9a713a}
+.tile:not(:disabled):hover{outline:2px solid #fff0bd;outline-offset:-5px}.tile:disabled{cursor:default;opacity:1}.tile.answer{outline:3px solid #fff5cb;outline-offset:-5px;box-shadow:0 0 0 3px #362a15}.tile.wrong{outline:3px dashed #332318;outline-offset:-5px}.tile-label{pointer-events:none;paint-order:stroke fill;-webkit-text-stroke:3px #fff9e9}
+#feedback{height:34px;padding-top:12px;text-align:center;font-size:12px;color:#60421e;font-weight:700}
+#result{text-align:center}.result-symbol{width:46px;height:46px;border:3px solid #8f681c;outline:2px solid #d9b253;margin:4px auto 16px;background:linear-gradient(135deg,#f9e6a0,#d4a43e);box-shadow:3px 3px #a77b38;color:#4b3b10;display:grid;place-items:center;font-size:26px;font-weight:800}
+#result h2{font-size:24px;margin:0 0 8px}.score-big{font-size:72px;line-height:1.2;font-weight:900;letter-spacing:-3px;color:#4b591e;text-shadow:2px 2px #fff0bf;margin:15px 0 0}.score-caption{font-size:12px;color:#7b592e;margin:0 0 18px}.result-note{font-size:12px;margin-bottom:22px}#reset-levels{border:0;background:transparent;color:#7c552b;font-size:12px;margin-top:12px;padding:4px;text-decoration:underline}
+#window-status{font-size:12px;color:#ffe2a4;margin:0 0 12px}
+body.covered{background:#f3f5f1}.covered .shell{display:none}#privacy-cover{min-height:140px;display:grid;place-items:center}#reveal{border:1px solid #d9dfd8;border-radius:9px;background:#fafbf9;color:#788178;font-size:13px;padding:10px 20px}
+@media(max-width:480px){body{padding:16px 14px}.card{padding:23px 22px 20px}.paper-title{font-size:23px}h1{font-size:25px}.badge{display:none}}
+@media(max-height:600px){
+body{padding:10px 12px}.shell{max-width:390px}header{margin-bottom:9px}.brand{font-size:10px;letter-spacing:1px}.window-button{padding:3px 7px}
+.card{padding:15px 16px 14px}.card:before,.card:after,.pin{width:10px;height:10px;left:5px}.pin{left:auto;right:5px}
+.paper-title{font-size:20px;padding:5px 8px;letter-spacing:3px;margin-bottom:12px;border-width:2px}.scroll-icon{width:18px;height:20px}
+.eyebrow{font-size:10px;letter-spacing:1px}h1{font-size:22px;margin:5px 0 7px}#intro>p{font-size:11px;line-height:1.6}
+.rule{padding:10px;margin:10px 0 8px}.rule strong{font-size:12px;margin-bottom:8px}.example{margin-bottom:7px;gap:10px}.example-command{font-size:19px}.sample{width:40px;height:31px;font-size:12px}.rule p{font-size:11px;line-height:1.5}.notes{font-size:10px;padding:8px 0;margin-bottom:10px}
+.primary{padding:8px;font-size:16px}.stats{padding:6px 0 5px;line-height:1.3}.stat-label{font-size:10px;margin:0}.stat-value{font-size:22px}.time-track{height:5px;margin-top:4px}
+.instruction{padding:9px 0 10px;line-height:1.3}.instruction small{font-size:10px}.instruction h2{font-size:25px;margin-top:4px}
+.grid{width:min(100%,calc(100svh - 326px),300px);gap:8px}.tile{font-size:16px;box-shadow:inset 2px 2px #ffffff42,inset -2px -2px #00000026,1px 1px #9a713a}.tile-label{-webkit-text-stroke:2px #fff9e9}
+#feedback{height:26px;padding-top:9px;font-size:11px}footer{font-size:10px;margin-top:10px;letter-spacing:1px}
+#result h2{font-size:21px}.result-symbol{width:36px;height:36px;margin:0 auto 10px;font-size:22px}.score-big{font-size:54px;margin-top:8px}.score-caption{margin-bottom:10px}.result-note{margin-bottom:15px}#reset-levels{margin-top:8px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<section id="privacy-cover" hidden><button id="reveal" type="button">继续显示</button></section>
+<main class="shell">
+<header><div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>休息一下</div><div class="actions"><span class="badge">v1.9</span><button id="small-window" class="window-button" type="button">↗ 小窗口</button></div></header>
+<p id="window-status" role="status" hidden></p>
+<div class="card">
+<i class="pin top" aria-hidden="true"></i><i class="pin bottom" aria-hidden="true"></i>
+<div class="paper-title"><svg class="scroll-icon" viewBox="0 0 24 28" aria-hidden="true"><path d="M5 2H21V6H18V23H3V20H6V6H3V2Z" fill="#f8e5a4" stroke="#493117" stroke-width="2"/><path d="M18 2V6H21M6 20H3V25H18V22M9 8H15M9 12H15M9 16H14" fill="none" stroke="#87632d" stroke-width="2"/></svg>任务简报</div>
+<section id="intro">
+<div class="eyebrow">休息时间 · 反应力试炼</div>
+<h1><span>30秒</span>颜色反应挑战</h1>
+<p>10 关挑战，每关最多 30 秒。<br>前六关选文字，后四关文字／底色混合。</p>
+<div class="rule"><strong>先看选什么，再找对应格子。</strong><div class="example"><span class="example-command">文字：蓝色</span><span class="arrow" aria-hidden="true">→</span><span class="sample" aria-label="红底上写着蓝色">蓝色</span></div><p>选文字：找写着“蓝色”的格子。<br>选底色：找蓝底格子。字色始终是干扰。</p></div>
+<div class="notes"><span>答对 +1 分</span><span>答错显示答案</span><span>达标即过关</span></div>
+<button id="start" class="primary">接受挑战 · 第 1 关</button>
+</section>
+<section id="play" hidden aria-label="答题区">
+<div class="stats"><div><span class="stat-label" id="level-label">第 1 / 10 关</span><span id="score" class="stat-value">0</span><span class="unit" id="goal-label">/ 5 题</span></div><div><span class="stat-label">剩余时间</span><span id="time" class="stat-value">30.0</span><span class="unit">秒</span></div></div>
+<div class="time-track" aria-hidden="true"><div id="time-fill"></div></div>
+<div class="instruction"><small id="mode-help">只看格内文字，忽略底色和字色</small><h2 id="command"><span id="command-rule"></span><span id="command-target"></span></h2></div>
+<div id="grid" class="grid"></div>
+<div id="feedback" role="status" aria-live="polite"></div>
+</section>
+<section id="result" hidden>
+<div id="result-symbol" class="result-symbol" aria-hidden="true">✓</div><h2 id="result-title">本关结束</h2><p id="result-subtitle">本关答对</p><div id="total" class="score-big">0</div><div id="result-caption" class="score-caption"></div><p id="result-note" class="result-note"></p><button id="restart" class="primary">重试本关 →</button><button id="reset-levels" type="button">从第 1 关重新开始</button>
+</section>
+</div><footer>— 先看规则，再选答案 —</footer>
+</main>
+<script>
+(() => {
+'use strict';
+const colors=[
+{name:'红色',fill:'#d94c50',ink:'#c13d43'},
+{name:'蓝色',fill:'#397dcb',ink:'#2867ac'},
+{name:'黄色',fill:'#efc64c',ink:'#947000'},
+{name:'绿色',fill:'#438760',ink:'#33734e'},
+{name:'橙色',fill:'#ed8528',ink:'#b85b0d'},
+{name:'紫色',fill:'#8650b6',ink:'#7840a8'},
+{name:'粉色',fill:'#f2a9cd',ink:'#b74682'},
+{name:'棕色',fill:'#825437',ink:'#825437'},
+{name:'灰色',fill:'#a4abb2',ink:'#626c76'}
+];
+const $=id=>document.getElementById(id);
+const isMini=location.hash==='#mini';
+const levels=Array.from({length:10},(_,i)=>({goal:5+i*2,interference:(i+1)/10}));
+let level=0,won=false,mode='word';
+function pickColor(excluded){const pool=colors.map((_,i)=>i).filter(i=>!excluded.includes(i));return pool[rand(pool.length)];}
+function distract(base){return Math.random()<levels[level].interference?pickColor([base]):base;}
+let concealed=false,paused=false,pausedRemaining=0,feedbackDue=0,feedbackLeft=0;
+let phase='intro',score=0,deadline=0,answer=0,frame=0,pending=0,round=0,lastCommandInk=-1;
+const rand=n=>Math.floor(Math.random()*n);
+function shuffled(){const list=colors.map((_,i)=>i);for(let i=list.length-1;i>0;i--){const j=rand(i+1);[list[i],list[j]]=[list[j],list[i]];}return list;}
+function modeName(){return mode==='word'?'文字':'底色';}
+function show(id){
+ for(const name of ['intro','play','result'])$(name).hidden=name!==id;
+ $('small-window').disabled=id==='play';
+ $('small-window').title=id==='play'?'本局结束后可打开小窗口':'打开独立的小窗口，从规则页开始';
+}
+function lock(){for(const button of $('grid').children)button.disabled=true;}
+function stop(){cancelAnimationFrame(frame);clearTimeout(pending);frame=0;pending=0;}
+function finish(passed=false){
+ if(phase==='ended'||phase==='intro')return;
+ const left=remaining();
+ phase='ended';won=passed;stop();lock();
+ if(!passed){$('time').textContent='0.0';$('time-fill').style.width='0%';}
+ $('total').textContent=score;
+ $('result-symbol').textContent=passed?'✓':'·';
+ $('result-title').textContent=passed?(level===9?'十关全部通过！':'第 '+(level+1)+' 关通过！'):'第 '+(level+1)+' 关未通过';
+ $('result-subtitle').textContent='本关答对';
+ $('result-caption').textContent=score+' / '+levels[level].goal+' 题';
+ $('result-note').textContent=passed?(level===9?'挑战完成，休息一下吧。':'下一关：'+levels[level+1].goal+' 题，'+(level+1>=6?'文字／底色随机切换。':'选择格内文字。')):'还差 '+(levels[level].goal-score)+' 题，再试一次。';
+ $('restart').textContent=passed?(level===9?'再挑战十关 →':'进入第 '+(level+2)+' 关 →'):'重试第 '+(level+1)+' 关 →';
+ $('reset-levels').hidden=level===0||(passed&&level===9);
+ show('result');if(!concealed)$('restart').focus();
+}
+function remaining(){return paused?pausedRemaining:Math.max(0,deadline-performance.now());}
+function paintTime(){
+ const left=remaining();
+ $('time').textContent=(Math.ceil(left/100)/10).toFixed(1);
+ $('time').classList.toggle('low',left<=5000);
+ $('time-fill').style.width=(left/30000*100)+'%';
+ if(left<=0){finish(false);return false;}return true;
+}
+function tick(){if(paused||(phase!=='active'&&phase!=='feedback'))return;if(paintTime())frame=requestAnimationFrame(tick);}
+function question(){
+ if(!paintTime())return;
+ answer=rand(colors.length);
+ mode=level<6?'word':(Math.random()<.5?'word':'background');
+ const cells=shuffled(),words=shuffled();
+ $('command').dataset.mode=mode;
+ $('command-rule').textContent='找到'+modeName()+'：';
+ $('command-target').textContent=colors[answer].name;
+ $('mode-help').textContent=mode==='word'?'只看格内文字，忽略底色和字色':'只看格子底色，忽略格内文字和字色';
+ const wantMismatch=Math.random()<levels[level].interference||answer===lastCommandInk;
+ const inkChoices=colors.map((_,i)=>i).filter(i=>i!==lastCommandInk&&(!wantMismatch||i!==answer));
+ lastCommandInk=wantMismatch?inkChoices[rand(inkChoices.length)]:answer;
+ $('command-target').style.color=colors[lastCommandInk].ink;
+ $('feedback').textContent='';
+ $('grid').replaceChildren(...cells.map((color,index)=>{
+   const button=document.createElement('button');button.type='button';button.className='tile';
+   button.style.backgroundColor=colors[color].fill;button.dataset.color=colors[color].name;
+   const label=document.createElement('span');label.className='tile-label';
+   label.textContent=colors[words[index]].name;button.dataset.word=label.textContent;
+   label.style.color=colors[distract(words[index])].fill;
+   label.setAttribute('aria-hidden','true');button.append(label);
+   button.setAttribute('aria-label',colors[color].name+'底，文字'+label.textContent);
+   button.addEventListener('click',()=>choose(mode==='word'?words[index]:color,button));return button;
+ }));
+ phase='active';
+}
+function choose(color,button){
+ if(concealed||phase!=='active')return;
+ if(!paintTime())return;
+ phase='feedback';lock();
+ const correct=color===answer;
+ if(correct){score++;$('score').textContent=score;$('feedback').textContent='答对了，+1';button.classList.add('answer');}
+ else{
+   button.classList.add('wrong');$('feedback').textContent='正确'+modeName()+'：'+colors[answer].name;
+   for(const tile of $('grid').children)if(tile.dataset[mode==='word'?'word':'color']===colors[answer].name)tile.classList.add('answer');
+ }
+ if(correct&&score>=levels[level].goal){finish(true);return;}
+ scheduleFeedback(correct?300:700);
+}
+function scheduleFeedback(delay){
+ feedbackDue=performance.now()+delay;
+ const thisRound=round;
+ pending=setTimeout(()=>{pending=0;if(!paused&&thisRound===round&&phase==='feedback')question();},delay);
+}
+function start(){
+ stop();won=false;paused=false;pausedRemaining=0;feedbackLeft=0;round++;score=0;lastCommandInk=-1;phase='active';deadline=performance.now()+30000;
+ $('level-label').textContent='第 '+(level+1)+' / 10 关';$('goal-label').textContent='/ '+levels[level].goal+' 题';
+ $('score').textContent='0';$('total').textContent='0';$('feedback').textContent='';$('time').classList.remove('low');
+ show('play');question();tick();
+}
+let miniWindow=null;
+if(isMini){
+ $('small-window').hidden=true;
+ document.querySelector('.brand').lastChild.textContent='休息一下 · 小窗口';
+ document.title='颜色挑战 · 小窗口';
+}
+$('small-window').addEventListener('click',()=>{
+ $('window-status').hidden=true;
+ try{
+  if(miniWindow&&!miniWindow.closed){miniWindow.focus();return;}
+  const url=new URL(location.href);url.hash='mini';
+  const width=340,height=500;
+  const left=Math.max(0,Math.round((screen.availWidth-width)/2));
+  const top=Math.max(0,Math.round((screen.availHeight-height)/2));
+  miniWindow=window.open(url.href,'colorChallengeMini','popup=yes,width='+width+',height='+height+',left='+left+',top='+top+',resizable=yes,scrollbars=yes');
+  if(!miniWindow)throw new Error('blocked');
+  miniWindow.focus();
+ }catch{
+  $('window-status').textContent='小窗口未能打开。请在浏览器地址栏允许此页面弹出窗口，再点一次“小窗口”。';
+  $('window-status').hidden=false;
+ }
+});
+$('start').addEventListener('click',()=>{level=0;start();});
+$('restart').addEventListener('click',()=>{if(won)level=level===9?0:level+1;start();});
+$('reset-levels').addEventListener('click',()=>{level=0;start();});
+function conceal(){
+ if(!isMini)return;
+ if(!paused&&(phase==='active'||phase==='feedback')){
+  if(paintTime()){
+   pausedRemaining=remaining();
+   feedbackLeft=phase==='feedback'?Math.max(0,feedbackDue-performance.now()):0;
+   paused=true;stop();
+  }
+ }
+ concealed=true;document.body.classList.add('covered');
+ document.querySelector('.shell').inert=true;
+ $('privacy-cover').hidden=false;document.title='休息一下';
+ if(document.activeElement instanceof HTMLElement)document.activeElement.blur();
+}
+window.addEventListener('blur',conceal);
+document.addEventListener('visibilitychange',()=>{
+ if(document.hidden)conceal();
+ if(phase==='active'||phase==='feedback')paintTime();
+});
+$('reveal').addEventListener('click',()=>{
+ if(paused){
+  deadline=performance.now()+pausedRemaining;paused=false;
+  if(phase==='feedback')scheduleFeedback(feedbackLeft);
+  tick();
+ }else if(phase==='active'||phase==='feedback')paintTime();
+ concealed=false;document.body.classList.remove('covered');
+ document.querySelector('.shell').inert=false;
+ $('privacy-cover').hidden=true;document.title='颜色挑战 · 小窗口';
+ if(phase==='ended')$('restart').focus();
+});
+
+})();
+</script>
+</body>
+</html>
+
+
+
